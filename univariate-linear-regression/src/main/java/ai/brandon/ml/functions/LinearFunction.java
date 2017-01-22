@@ -1,4 +1,4 @@
-package ai.brandon.common.functions;
+package ai.brandon.ml.functions;
 
 import java.math.BigDecimal;
 

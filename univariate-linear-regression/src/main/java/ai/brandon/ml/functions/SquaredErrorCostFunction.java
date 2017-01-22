@@ -1,11 +1,11 @@
-package ai.brandon.common.functions;
+package ai.brandon.ml.functions;
 
 import static java.math.BigDecimal.ZERO;
 import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
 
-import ai.brandon.common.model.TrainingSet;
+import ai.brandon.ml.model.TrainingSet;
 
 public class SquaredErrorCostFunction<T> {
 

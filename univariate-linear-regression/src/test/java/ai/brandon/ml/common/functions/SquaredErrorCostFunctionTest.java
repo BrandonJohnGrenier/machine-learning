@@ -1,4 +1,4 @@
-package ai.brandon.common.functions;
+package ai.brandon.ml.common.functions;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.common.model.TrainingSet;
+import ai.brandon.ml.functions.SquaredErrorCostFunction;
+import ai.brandon.ml.model.TrainingSet;
 
 public class SquaredErrorCostFunctionTest {
 

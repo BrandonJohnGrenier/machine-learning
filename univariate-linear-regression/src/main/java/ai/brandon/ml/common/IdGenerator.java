@@ -1,4 +1,4 @@
-package ai.brandon.common.util;
+package ai.brandon.ml.common;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

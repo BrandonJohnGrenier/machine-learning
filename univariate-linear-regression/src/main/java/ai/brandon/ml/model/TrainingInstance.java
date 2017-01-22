@@ -1,7 +1,7 @@
-package ai.brandon.common.model;
+package ai.brandon.ml.model;
 
 import static com.google.common.base.Objects.equal;
-import ai.brandon.common.util.IdGenerator;
+import ai.brandon.ml.common.IdGenerator;
 
 import com.google.common.base.Objects;
 

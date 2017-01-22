@@ -1,18 +1,18 @@
-package ai.brandon.ulr;
+package ai.brandon.ml.algorithms;
 
 import java.math.BigDecimal;
 
-import ai.brandon.common.functions.LinearFunction;
-import ai.brandon.common.model.TrainingSet;
-import ai.brandon.common.util.ErrorFunction;
+import ai.brandon.ml.common.ErrorFunction;
+import ai.brandon.ml.functions.LinearFunction;
+import ai.brandon.ml.model.TrainingSet;
 
-public class Algorithm<T> {
+public class GradientDescentAlgorithm<T> {
 
 	private TrainingSet<T> trainingSet;
 
 	private static final double TOLERANCE = 1E-11;
 
-	public Algorithm(TrainingSet<T> trainingSet) {
+	public GradientDescentAlgorithm(TrainingSet<T> trainingSet) {
 		this.trainingSet = trainingSet;
 	}
 

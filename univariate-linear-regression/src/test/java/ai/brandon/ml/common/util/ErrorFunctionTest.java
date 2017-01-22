@@ -1,4 +1,4 @@
-package ai.brandon.utils;
+package ai.brandon.ml.common.util;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.common.functions.LinearFunction;
-import ai.brandon.common.model.TrainingSet;
-import ai.brandon.common.util.ErrorFunction;
+import ai.brandon.ml.common.ErrorFunction;
+import ai.brandon.ml.functions.LinearFunction;
+import ai.brandon.ml.model.TrainingSet;
 
 public class ErrorFunctionTest {
 

@@ -1,4 +1,4 @@
-package ai.brandon.common.model;
+package ai.brandon.ml.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

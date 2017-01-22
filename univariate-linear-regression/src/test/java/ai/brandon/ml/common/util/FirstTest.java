@@ -1,10 +1,10 @@
-package ai.brandon.utils;
+package ai.brandon.ml.common.util;
 
 import org.junit.Test;
 
-import ai.brandon.common.model.TrainingInstance;
-import ai.brandon.common.model.TrainingSet;
-import ai.brandon.ulr.Algorithm;
+import ai.brandon.ml.algorithms.GradientDescentAlgorithm;
+import ai.brandon.ml.model.TrainingInstance;
+import ai.brandon.ml.model.TrainingSet;
 
 public class FirstTest {
 
@@ -18,7 +18,7 @@ public class FirstTest {
 		set.add(new TrainingInstance(5, 5));
 		set.add(new TrainingInstance(6, 6));
 		
-		Algorithm algorithm = new Algorithm(set);
+		GradientDescentAlgorithm algorithm = new GradientDescentAlgorithm(set);
 		algorithm.run();
 	}
 

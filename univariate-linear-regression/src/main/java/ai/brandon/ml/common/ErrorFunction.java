@@ -1,11 +1,11 @@
-package ai.brandon.common.util;
+package ai.brandon.ml.common;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import ai.brandon.common.functions.LinearFunction;
-import ai.brandon.common.model.TrainingInstance;
-import ai.brandon.common.model.TrainingSet;
+import ai.brandon.ml.functions.LinearFunction;
+import ai.brandon.ml.model.TrainingInstance;
+import ai.brandon.ml.model.TrainingSet;
 
 public final class ErrorFunction {
 
