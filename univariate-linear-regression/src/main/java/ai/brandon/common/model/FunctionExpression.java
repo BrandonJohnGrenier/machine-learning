@@ -2,6 +2,8 @@ package ai.brandon.common.model;
 
 import java.math.BigDecimal;
 
+import ai.brandon.common.functions.LinearFunction;
+
 public class FunctionExpression<T> {
 
 	private final LinearFunction<T> function;

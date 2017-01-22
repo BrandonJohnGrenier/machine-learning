@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.common.model.LinearFunction;
+import ai.brandon.common.functions.LinearFunction;
 import ai.brandon.common.model.TrainingSet;
 import ai.brandon.common.util.ErrorFunction;
 

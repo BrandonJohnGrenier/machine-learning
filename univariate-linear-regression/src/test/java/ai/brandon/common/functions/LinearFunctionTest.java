@@ -1,4 +1,4 @@
-package ai.brandon.utils;
+package ai.brandon.common.functions;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.common.model.LinearFunction;
+import ai.brandon.common.functions.LinearFunction;
 
 public class LinearFunctionTest {
 

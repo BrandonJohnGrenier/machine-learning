@@ -3,7 +3,7 @@ package ai.brandon.common.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import ai.brandon.common.model.LinearFunction;
+import ai.brandon.common.functions.LinearFunction;
 import ai.brandon.common.model.TrainingInstance;
 import ai.brandon.common.model.TrainingSet;
 

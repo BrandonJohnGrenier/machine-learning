@@ -1,7 +1,9 @@
 package ai.brandon.common.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class TrainingSet<T> {
 
@@ -21,10 +23,6 @@ public class TrainingSet<T> {
 	}
 
 	public TrainingSet<T> add(TrainingInstance<T> instance) {
-		if (instance == null) {
-			throw new IllegalArgumentException("You cannot add a null training instance to the training set.");
-		}
-
 		this.instances.add(instance);
 		return this;
 	}
@@ -35,7 +33,7 @@ public class TrainingSet<T> {
 	}
 
 	public List<TrainingInstance<T>> list() {
-		return instances;
+		return Collections.unmodifiableList(instances);
 	}
 
 	public Integer indexOf(TrainingInstance<T> instance) {
@@ -48,6 +46,10 @@ public class TrainingSet<T> {
 
 	public Integer size() {
 		return instances.size();
+	}
+
+	public Stream<TrainingInstance<T>> stream() {
+		return instances.stream();
 	}
 
 }
