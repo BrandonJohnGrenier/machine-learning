@@ -29,19 +29,19 @@ public class LinearFunctionTest {
 
 	@Test
 	public void shouldBeAbleToCalculateTheValueOfALinearFunctionWithDoubleParameters() {
-		assertThat(new LinearFunction<Double>(1.0, 1.0).at(8.0)).isEqualTo(new BigDecimal("9.0"));
-		assertThat(new LinearFunction<Double>(1.0, 1.0).at(0.0)).isEqualTo(new BigDecimal("1.0"));
-		assertThat(new LinearFunction<Double>(0.0, 5.0).at(8.0)).isEqualTo(new BigDecimal("40.0"));
-		assertThat(new LinearFunction<Double>(0.0, 5.0).at(0.0)).isEqualTo(new BigDecimal("0.0"));
-		assertThat(new LinearFunction<Double>(5.0, 0.0).at(8.0)).isEqualTo(new BigDecimal("5.0"));
-		assertThat(new LinearFunction<Double>(5.0, 0.0).at(0.0)).isEqualTo(new BigDecimal("5.0"));
+		assertThat(new LinearFunction<Double>(1.0, 1.0).at(8.0)).isEqualTo(new BigDecimal("9.00"));
+		assertThat(new LinearFunction<Double>(1.0, 1.0).at(0.0)).isEqualTo(new BigDecimal("1.00"));
+		assertThat(new LinearFunction<Double>(0.0, 5.0).at(8.0)).isEqualTo(new BigDecimal("40.00"));
+		assertThat(new LinearFunction<Double>(0.0, 5.0).at(0.0)).isEqualTo(new BigDecimal("0.00"));
+		assertThat(new LinearFunction<Double>(5.0, 0.0).at(8.0)).isEqualTo(new BigDecimal("5.00"));
+		assertThat(new LinearFunction<Double>(5.0, 0.0).at(0.0)).isEqualTo(new BigDecimal("5.00"));
 
-		assertThat(new LinearFunction<Double>(-1.0, -1.0).at(8.0)).isEqualTo(new BigDecimal("-9.0"));
-		assertThat(new LinearFunction<Double>(-1.0, -1.0).at(0.0)).isEqualTo(new BigDecimal("-1.0"));
-		assertThat(new LinearFunction<Double>(0.0, -5.0).at(8.0)).isEqualTo(new BigDecimal("-40.0"));
-		assertThat(new LinearFunction<Double>(0.0, -5.0).at(0.0)).isEqualTo(new BigDecimal("0.0"));
-		assertThat(new LinearFunction<Double>(-5.0, 0.0).at(8.0)).isEqualTo(new BigDecimal("-5.0"));
-		assertThat(new LinearFunction<Double>(-5.0, 0.0).at(0.0)).isEqualTo(new BigDecimal("-5.0"));
+		assertThat(new LinearFunction<Double>(-1.0, -1.0).at(8.0)).isEqualTo(new BigDecimal("-9.00"));
+		assertThat(new LinearFunction<Double>(-1.0, -1.0).at(0.0)).isEqualTo(new BigDecimal("-1.00"));
+		assertThat(new LinearFunction<Double>(0.0, -5.0).at(8.0)).isEqualTo(new BigDecimal("-40.00"));
+		assertThat(new LinearFunction<Double>(0.0, -5.0).at(0.0)).isEqualTo(new BigDecimal("0.00"));
+		assertThat(new LinearFunction<Double>(-5.0, 0.0).at(8.0)).isEqualTo(new BigDecimal("-5.00"));
+		assertThat(new LinearFunction<Double>(-5.0, 0.0).at(0.0)).isEqualTo(new BigDecimal("-5.00"));
 	}
 
 }

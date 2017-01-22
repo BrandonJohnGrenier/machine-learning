@@ -18,12 +18,12 @@ public class SquaredErrorCostFunctionTest {
 
 		SquaredErrorCostFunction<Integer> function = new SquaredErrorCostFunction<Integer>(set);
 
-		assertThat(function.at(1, 1)).isEqualTo(new BigDecimal("0.500"));
-		assertThat(function.at(0, 1)).isEqualTo(new BigDecimal("0.000"));
-		assertThat(function.at(1, 0)).isEqualTo(new BigDecimal("2.583"));
-		assertThat(function.at(0, 0)).isEqualTo(new BigDecimal("4.583"));
-		assertThat(function.at(-1, 0)).isEqualTo(new BigDecimal("7.583"));
-		assertThat(function.at(-1, -1)).isEqualTo(new BigDecimal("23.833"));
+		assertThat(function.at(1, 1)).isEqualTo(new BigDecimal("0.5000000000"));
+		assertThat(function.at(0, 1)).isEqualTo(new BigDecimal("0.0000000000"));
+		assertThat(function.at(1, 0)).isEqualTo(new BigDecimal("2.5833333333"));
+		assertThat(function.at(0, 0)).isEqualTo(new BigDecimal("4.5833333333"));
+		assertThat(function.at(-1, 0)).isEqualTo(new BigDecimal("7.5833333333"));
+		assertThat(function.at(-1, -1)).isEqualTo(new BigDecimal("23.8333333333"));
 	}
 
 	@Test
@@ -33,12 +33,12 @@ public class SquaredErrorCostFunctionTest {
 
 		SquaredErrorCostFunction<Double> function = new SquaredErrorCostFunction<Double>(set);
 
-		assertThat(function.at(1.0, 1.0)).isEqualTo(new BigDecimal("0.500"));
-		assertThat(function.at(0.0, 1.0)).isEqualTo(new BigDecimal("0.000"));
-		assertThat(function.at(1.0, 0.0)).isEqualTo(new BigDecimal("2.583"));
-		assertThat(function.at(0.0, 0.0)).isEqualTo(new BigDecimal("4.583"));
-		assertThat(function.at(-1.0, 0.0)).isEqualTo(new BigDecimal("7.583"));
-		assertThat(function.at(-1.0, -1.0)).isEqualTo(new BigDecimal("23.833"));
+		assertThat(function.at(1.0, 1.0)).isEqualTo(new BigDecimal("0.5000000000"));
+		assertThat(function.at(0.0, 1.0)).isEqualTo(new BigDecimal("0.0000000000"));
+		assertThat(function.at(1.0, 0.0)).isEqualTo(new BigDecimal("2.5833333333"));
+		assertThat(function.at(0.0, 0.0)).isEqualTo(new BigDecimal("4.5833333333"));
+		assertThat(function.at(-1.0, 0.0)).isEqualTo(new BigDecimal("7.5833333333"));
+		assertThat(function.at(-1.0, -1.0)).isEqualTo(new BigDecimal("23.8333333333"));
 	}
 
 }
