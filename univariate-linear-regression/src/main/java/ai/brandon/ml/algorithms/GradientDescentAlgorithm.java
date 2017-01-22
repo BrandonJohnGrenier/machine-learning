@@ -4,75 +4,57 @@ import java.math.BigDecimal;
 
 import ai.brandon.ml.common.ErrorFunction;
 import ai.brandon.ml.functions.LinearFunction;
+import ai.brandon.ml.functions.SquaredErrorCostFunction;
 import ai.brandon.ml.model.TrainingSet;
 
 public class GradientDescentAlgorithm<T> {
 
-	private TrainingSet<T> trainingSet;
+	private final TrainingSet<T> set;
+	private final SquaredErrorCostFunction<T> costFunction;
 
-	private static final double TOLERANCE = 1E-11;
+	private Double tolerance = 1E-9;
+	private Double alpha = 0.100;
 
-	public GradientDescentAlgorithm(TrainingSet<T> trainingSet) {
-		this.trainingSet = trainingSet;
+	public GradientDescentAlgorithm(TrainingSet<T> set) {
+		this.set = set;
+		this.costFunction = new SquaredErrorCostFunction<>(this.set);
 	}
 
-	public void run() {
-		BigDecimal theta_zero = new BigDecimal(0.5);
-		BigDecimal theta_one = new BigDecimal(0.5);
-		BigDecimal delta_one = new BigDecimal(0);
-		BigDecimal delta_zero = new BigDecimal(0);
+	public LinearFunction<T> run() {
+		BigDecimal theta0 = new BigDecimal(0.0);
+		BigDecimal tempTheta0 = new BigDecimal(0);
 
-		Double alpha = 0.905;
-		Double tolerance = 1000.0;
+		BigDecimal theta1 = new BigDecimal(0.0);
+		BigDecimal tempTheta1 = new BigDecimal(0);
 
-		BigDecimal temp0 = new BigDecimal(0);
-		BigDecimal temp1 = new BigDecimal(0);
+		BigDecimal cost = new BigDecimal(100);
 
-		int i = 0;
+		while (cost.doubleValue() > tolerance) {
+			cost = costFunction.at(theta0, theta1);
+			tempTheta0 = calculateThetaZero(theta0, theta1, alpha);
+			tempTheta1 = calculateThetaOne(theta0, theta1, alpha);
 
-		do {
-			i++;
-			if (i % 10 == 0) {
-				System.out.println("theta_0 = " + theta_zero.doubleValue());
-				System.out.println("theta_1 = " + theta_one.doubleValue());
-				// System.out.println("");
-			}
+			BigDecimal newCost = costFunction.at(tempTheta0, tempTheta1);
 
-			temp0 = calculateThetaZero(theta_zero, theta_one, alpha);
-			temp1 = calculateThetaOne(theta_zero, theta_one, alpha);
+			alpha = (newCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.01;
 
-			// System.out.println("temp_0 = " + temp0 + ", temp_1 = " + temp1);
-
-			delta_zero = theta_zero.subtract(temp0);
-			delta_one = theta_one.subtract(temp1);
-			// System.out.println("delta_0 = " + delta_zero);
-			// System.out.println("delta_1 = " + delta_one);
-
-			theta_zero = temp0;
-			theta_one = temp1;
-
-			tolerance = Math.abs(delta_zero.doubleValue() + delta_one.doubleValue());
-
-			if (i % 10 == 0) {
-				System.out.println("tolerance: " + tolerance);
-				System.out.println("--------------------------------------------");
-			}
-			// System.out.println("");
+			theta0 = tempTheta0;
+			theta1 = tempTheta1;
 		}
-		while (tolerance > TOLERANCE);
 
+		return new LinearFunction<T>(theta0, theta1);
 	}
 
-	public BigDecimal calculateThetaZero(BigDecimal theta_zero, BigDecimal theta_one, Double alpha) {
-		LinearFunction<T> function = new LinearFunction<T>(theta_zero, theta_one);
-		BigDecimal vector = ErrorFunction.averageOfErrors(function, trainingSet).multiply(new BigDecimal(alpha.toString()));
-		return new BigDecimal(theta_zero.toString()).subtract(vector);
+	public BigDecimal calculateThetaZero(BigDecimal theta0, BigDecimal theta1, Double alpha) {
+		LinearFunction<T> function = new LinearFunction<T>(theta0, theta1);
+		BigDecimal vector = ErrorFunction.averageOfErrors(function, set).multiply(new BigDecimal(alpha.toString()));
+		return new BigDecimal(theta0.toString()).subtract(vector);
 	}
 
-	public BigDecimal calculateThetaOne(BigDecimal theta_zero, BigDecimal theta_one, Double alpha) {
-		LinearFunction<T> function = new LinearFunction<T>(theta_zero, theta_one);
-		BigDecimal vector = ErrorFunction.averageOfErrors2(function, trainingSet).multiply(new BigDecimal(alpha.toString()));
-		return new BigDecimal(theta_one.toString()).subtract(vector);
+	public BigDecimal calculateThetaOne(BigDecimal theta0, BigDecimal theta1, Double alpha) {
+		LinearFunction<T> function = new LinearFunction<T>(theta0, theta1);
+		BigDecimal vector = ErrorFunction.averageOfErrors2(function, set).multiply(new BigDecimal(alpha.toString()));
+		return new BigDecimal(theta1.toString()).subtract(vector);
 	}
 
 }

@@ -21,7 +21,7 @@ public class SquaredErrorCostFunction<T> {
 
 	public BigDecimal at(BigDecimal theta0, BigDecimal theta1) {
 		BigDecimal total = sumOfSquaredErrors(new LinearFunction<T>(theta0, theta1));
-		return total.divide(new BigDecimal(set.size() * 2), 3, HALF_UP);
+		return total.divide(new BigDecimal(set.size() * 2), 10, HALF_UP);
 	}
 
 	private BigDecimal sumOfSquaredErrors(LinearFunction<T> function) {
