@@ -19,13 +19,10 @@ public final class ErrorFunction {
 			return total;
 		}
 
-		//System.out.println("Evaluating Function: " + function.toString());
 		for (TrainingInstance<T> instance : set.list()) {
-			//System.out.println("f(" + instance.getX() + ") = " + function.at(instance.getX()).doubleValue() + ", actual = " + instance.getY() + ", delta = " + function.at(instance.getX()).subtract(new BigDecimal(instance.getY().toString())).doubleValue());
 			total = total.add(function.at(instance.getX()).subtract(new BigDecimal(instance.getY().toString())));
 		}
 
-		//System.out.println("Absolute error value: " + total);
 		return total;
 	}
 
@@ -35,14 +32,11 @@ public final class ErrorFunction {
 			return total;
 		}
 
-		//System.out.println("Evaluating Function 2: " + function.toString());
 		for (TrainingInstance<T> instance : set.list()) {
-			//System.out.println("f(" + instance.getX() + ") = " + function.at(instance.getX()));
 			BigDecimal temp = function.at(instance.getX()).subtract(new BigDecimal(instance.getY().toString()));
 			total = total.add(temp.multiply(new BigDecimal(instance.getX().toString())));
 		}
 
-		//System.out.println("Absolute error value 2: " + total);
 		return total;
 	}
 
