@@ -1,4 +1,4 @@
-package ai.brandon.ml.common.util;
+package ai.brandon.ml.algorithms;
 
 import org.junit.Test;
 
@@ -6,7 +6,7 @@ import ai.brandon.ml.algorithms.GradientDescentAlgorithm;
 import ai.brandon.ml.model.TrainingInstance;
 import ai.brandon.ml.model.TrainingSet;
 
-public class FirstTest {
+public class GradientDescentAlgorithmTest {
 
 	@Test
 	public void foo() {

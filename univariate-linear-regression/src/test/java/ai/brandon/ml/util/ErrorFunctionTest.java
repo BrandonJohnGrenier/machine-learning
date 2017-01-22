@@ -1,4 +1,4 @@
-package ai.brandon.ml.common.util;
+package ai.brandon.ml.util;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
