@@ -20,6 +20,22 @@ public class GradientDescentAlgorithm<T> {
 		this.costFunction = new SquaredErrorCostFunction<>(this.set);
 	}
 
+	public Double getTolerance() {
+		return tolerance;
+	}
+
+	public void setTolerance(Double tolerance) {
+		this.tolerance = tolerance;
+	}
+
+	public Double getAlpha() {
+		return alpha;
+	}
+
+	public void setAlpha(Double alpha) {
+		this.alpha = alpha;
+	}
+
 	public LinearFunction<T> run() {
 		BigDecimal theta0 = new BigDecimal(0.0);
 		BigDecimal tempTheta0 = new BigDecimal(0);
@@ -28,16 +44,19 @@ public class GradientDescentAlgorithm<T> {
 		BigDecimal tempTheta1 = new BigDecimal(0);
 
 		BigDecimal cost = new BigDecimal(100);
-
-		while (cost.doubleValue() > tolerance) {
+		Double convergence = new Double(100.0);
+		
+		while (convergence > tolerance) {
 			cost = costFunction.at(theta0, theta1);
+			System.out.println("cost = " + cost);
 			tempTheta0 = calculateThetaZero(theta0, theta1, alpha);
 			tempTheta1 = calculateThetaOne(theta0, theta1, alpha);
 
 			BigDecimal newCost = costFunction.at(tempTheta0, tempTheta1);
 
-			alpha = (newCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.01;
-
+			alpha = (newCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
+			convergence = Math.abs(newCost.doubleValue() - cost.doubleValue());
+			
 			theta0 = tempTheta0;
 			theta1 = tempTheta1;
 		}
