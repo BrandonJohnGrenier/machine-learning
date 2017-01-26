@@ -37,26 +37,22 @@ public class GradientDescentAlgorithm<T> {
 	}
 
 	public LinearFunction<T> run() {
-		BigDecimal theta0 = new BigDecimal(0.0);
-		BigDecimal tempTheta0 = new BigDecimal(0);
+		BigDecimal theta0 = new BigDecimal(0.0), tempTheta0 = new BigDecimal(0.0);
+		BigDecimal theta1 = new BigDecimal(0.0), tempTheta1 = new BigDecimal(0.0);
+		BigDecimal cost = new BigDecimal(100.0), tempCost = new BigDecimal(100.0);
 
-		BigDecimal theta1 = new BigDecimal(0.0);
-		BigDecimal tempTheta1 = new BigDecimal(0);
-
-		BigDecimal cost = new BigDecimal(100);
 		Double convergence = new Double(100.0);
-		
+
 		while (convergence > tolerance) {
+			tempTheta0 = calculateThetaZero(theta0, theta1);
+			tempTheta1 = calculateThetaOne(theta0, theta1);
+
 			cost = costFunction.at(theta0, theta1);
-			System.out.println("cost = " + cost);
-			tempTheta0 = calculateThetaZero(theta0, theta1, alpha);
-			tempTheta1 = calculateThetaOne(theta0, theta1, alpha);
+			tempCost = costFunction.at(tempTheta0, tempTheta1);
 
-			BigDecimal newCost = costFunction.at(tempTheta0, tempTheta1);
+			alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
+			convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
 
-			alpha = (newCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
-			convergence = Math.abs(newCost.doubleValue() - cost.doubleValue());
-			
 			theta0 = tempTheta0;
 			theta1 = tempTheta1;
 		}
@@ -64,13 +60,13 @@ public class GradientDescentAlgorithm<T> {
 		return new LinearFunction<T>(theta0, theta1);
 	}
 
-	public BigDecimal calculateThetaZero(BigDecimal theta0, BigDecimal theta1, Double alpha) {
+	public BigDecimal calculateThetaZero(BigDecimal theta0, BigDecimal theta1) {
 		LinearFunction<T> function = new LinearFunction<T>(theta0, theta1);
 		BigDecimal vector = ErrorFunction.averageOfErrors(function, set).multiply(new BigDecimal(alpha.toString()));
 		return new BigDecimal(theta0.toString()).subtract(vector);
 	}
 
-	public BigDecimal calculateThetaOne(BigDecimal theta0, BigDecimal theta1, Double alpha) {
+	public BigDecimal calculateThetaOne(BigDecimal theta0, BigDecimal theta1) {
 		LinearFunction<T> function = new LinearFunction<T>(theta0, theta1);
 		BigDecimal vector = ErrorFunction.averageOfErrors2(function, set).multiply(new BigDecimal(alpha.toString()));
 		return new BigDecimal(theta1.toString()).subtract(vector);
