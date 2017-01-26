@@ -1,17 +1,23 @@
 package ai.brandon.mlr.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import ai.brandon.mlr.common.JSON;
+
 public class TrainingInstance<T> {
 
-    private final FeatureSet<T> features;
+    private final List<T> features = new ArrayList<T>();
     private final T target;
 
-    public TrainingInstance(FeatureSet<T> features, T target) {
-        this.features = features;
+    public TrainingInstance(List<T> features, T target) {
+        this.features.addAll(features);
         this.target = target;
     }
 
-    public FeatureSet<T> getFeatures() {
-        return features;
+    public List<T> getFeatures() {
+        return Collections.unmodifiableList(features);
     }
 
     public T getTarget() {
@@ -19,7 +25,11 @@ public class TrainingInstance<T> {
     }
 
     public T getFeatureAt(Integer index) {
-        return features.list().get(index);
+        return features.get(index);
+    }
+    
+    public String toString() {
+        return JSON.stringify(this);
     }
     
 }

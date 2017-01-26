@@ -21,7 +21,7 @@ public final class ErrorFunction {
         }
 
         for (TrainingInstance<T> instance : set.list()) {
-            BigDecimal error = function.at(instance.getFeatures().list()).subtract(new BigDecimal(instance.getTarget().toString()));
+            BigDecimal error = function.at(instance.getFeatures()).subtract(new BigDecimal(instance.getTarget().toString()));
             if (featureIndex == 0) {
                 total = total.add(error.multiply(new BigDecimal(1)));
             }

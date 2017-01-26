@@ -30,7 +30,7 @@ public class SquaredErrorCostFunction<T> {
     }
 
     private BigDecimal sumOfSquaredErrors(LinearFunction<T> function) {
-        return set.stream().map(ith -> function.at(ith.getFeatures().list()).subtract(new BigDecimal(ith.getTarget().toString())).pow(2)).reduce(ZERO, BigDecimal::add);
+        return set.stream().map(ith -> function.at(ith.getFeatures()).subtract(new BigDecimal(ith.getTarget().toString())).pow(2)).reduce(ZERO, BigDecimal::add);
     }
 
 }

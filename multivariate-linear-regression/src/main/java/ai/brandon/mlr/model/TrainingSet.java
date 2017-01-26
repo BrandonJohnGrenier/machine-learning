@@ -27,7 +27,7 @@ public class TrainingSet<T> {
         return this;
     }
 
-    public TrainingSet<T> add(FeatureSet<T> features, T target) {
+    public TrainingSet<T> add(List<T> features, T target) {
         this.instances.add(new TrainingInstance<T>(features, target));
         return this;
     }

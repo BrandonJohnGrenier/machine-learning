@@ -1,13 +1,12 @@
 package ai.brandon.mlr.functions;
 
-import static ai.brandon.mlr.model.FeatureSet.features;
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.model.TrainingSet;
 
 public class SquaredErrorCostFunctionTest {
@@ -15,7 +14,7 @@ public class SquaredErrorCostFunctionTest {
     @Test
     public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenIntegerBasedTrainingSet() {
         TrainingSet<Integer> set = new TrainingSet<Integer>();
-        set.add(features(0), 0).add(features(1), 1).add(features(2), 2).add(features(3), 3).add(features(4), 4).add(features(5), 5);
+        set.add(asList(0), 0).add(asList(1), 1).add(asList(2), 2).add(asList(3), 3).add(asList(4), 4).add(asList(5), 5);
 
         SquaredErrorCostFunction<Integer> function = new SquaredErrorCostFunction<Integer>(set);
 
@@ -30,7 +29,7 @@ public class SquaredErrorCostFunctionTest {
     @Test
     public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenDoubleBasedTrainingSet() {
         TrainingSet<Double> set = new TrainingSet<Double>();
-        set.add(features(0.0), 0.0).add(features(1.0), 1.0).add(features(2.0), 2.0).add(features(3.0), 3.0).add(features(4.0), 4.0).add(features(5.0), 5.0);
+        set.add(asList(0.0), 0.0).add(asList(1.0), 1.0).add(asList(2.0), 2.0).add(asList(3.0), 3.0).add(asList(4.0), 4.0).add(asList(5.0), 5.0);
 
         SquaredErrorCostFunction<Double> function = new SquaredErrorCostFunction<Double>(set);
 

@@ -1,6 +1,6 @@
 package ai.brandon.mlr.algorithms;
 
-import static ai.brandon.mlr.model.FeatureSet.features;
+import static java.util.Arrays.asList;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class GradientDescentAlgorithmTest {
     @Test
     public void shouldBeAbleToMinimizeAndGenerateTheCorrectPredictiveFunction() {
         TrainingSet<Integer> set = new TrainingSet<Integer>();
-        set.add(features(0), 0).add(features(1), 1).add(features(2), 2).add(features(3), 3).add(features(4), 4).add(features(5), 5);
+        set.add(asList(0), 0).add(asList(1), 1).add(asList(2), 2).add(asList(3), 3).add(asList(4), 4).add(asList(5), 5);
 
         GradientDescentAlgorithm<Integer> gradientDescentAlgorithm = new GradientDescentAlgorithm<Integer>(set);
 
