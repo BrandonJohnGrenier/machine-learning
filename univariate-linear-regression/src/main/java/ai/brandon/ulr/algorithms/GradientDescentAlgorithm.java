@@ -1,11 +1,11 @@
-package ai.brandon.ml.algorithms;
+package ai.brandon.ulr.algorithms;
 
 import java.math.BigDecimal;
 
-import ai.brandon.ml.common.ErrorFunction;
-import ai.brandon.ml.functions.LinearFunction;
-import ai.brandon.ml.functions.SquaredErrorCostFunction;
-import ai.brandon.ml.model.TrainingSet;
+import ai.brandon.ulr.common.ErrorFunction;
+import ai.brandon.ulr.functions.LinearFunction;
+import ai.brandon.ulr.functions.SquaredErrorCostFunction;
+import ai.brandon.ulr.model.TrainingSet;
 
 public class GradientDescentAlgorithm<T> {
 

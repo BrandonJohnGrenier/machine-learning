@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.ml.common.ErrorFunction;
-import ai.brandon.ml.functions.LinearFunction;
-import ai.brandon.ml.model.TrainingSet;
+import ai.brandon.ulr.common.ErrorFunction;
+import ai.brandon.ulr.functions.LinearFunction;
+import ai.brandon.ulr.model.TrainingSet;
 
 public class ErrorFunctionTest {
 

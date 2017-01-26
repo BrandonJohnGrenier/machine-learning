@@ -1,4 +1,4 @@
-package ai.brandon.ml.common;
+package ai.brandon.ulr.common;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

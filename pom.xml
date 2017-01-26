@@ -22,7 +22,8 @@
 
     <modules>
         <module>univariate-linear-regression</module>
-    </modules>
+    <module>multivariate-linear-regression</module>
+  </modules>
 
     <repositories>
         <repository>

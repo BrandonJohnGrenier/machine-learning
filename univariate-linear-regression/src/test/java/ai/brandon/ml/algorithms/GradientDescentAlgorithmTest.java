@@ -4,8 +4,9 @@ import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
 
-import ai.brandon.ml.functions.LinearFunction;
-import ai.brandon.ml.model.TrainingSet;
+import ai.brandon.ulr.algorithms.GradientDescentAlgorithm;
+import ai.brandon.ulr.functions.LinearFunction;
+import ai.brandon.ulr.model.TrainingSet;
 
 public class GradientDescentAlgorithmTest {
 
