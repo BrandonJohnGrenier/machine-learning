@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import ai.brandon.mlr.model.TrainingSet;
+import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 @SuppressWarnings("unchecked")
 public class SquaredErrorCostFunction<T> {
 
-    private final TrainingSet<T> set;
+    private final SupervisedTrainingSet<T> set;
 
-    public SquaredErrorCostFunction(TrainingSet<T> set) {
+    public SquaredErrorCostFunction(SupervisedTrainingSet<T> set) {
         this.set = set;
     }
 

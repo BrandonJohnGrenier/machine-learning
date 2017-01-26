@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.mlr.model.TrainingSet;
+import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class SquaredErrorCostFunctionTest {
 
     @Test
-    public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenIntegerBasedTrainingSet() {
-        TrainingSet<Integer> set = new TrainingSet<Integer>();
+    public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenSingleVariableIntegerBasedTrainingSet() {
+        SupervisedTrainingSet<Integer> set = new SupervisedTrainingSet<Integer>(1);
         set.add(asList(0), 0).add(asList(1), 1).add(asList(2), 2).add(asList(3), 3).add(asList(4), 4).add(asList(5), 5);
 
         SquaredErrorCostFunction<Integer> function = new SquaredErrorCostFunction<Integer>(set);
@@ -27,8 +27,8 @@ public class SquaredErrorCostFunctionTest {
     }
 
     @Test
-    public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenDoubleBasedTrainingSet() {
-        TrainingSet<Double> set = new TrainingSet<Double>();
+    public void shouldBeAbleToCalculateTheSquaredErrorCostFunctionForTheGivenSingleVariableDoubleBasedTrainingSet() {
+        SupervisedTrainingSet<Double> set = new SupervisedTrainingSet<Double>(1);
         set.add(asList(0.0), 0.0).add(asList(1.0), 1.0).add(asList(2.0), 2.0).add(asList(3.0), 3.0).add(asList(4.0), 4.0).add(asList(5.0), 5.0);
 
         SquaredErrorCostFunction<Double> function = new SquaredErrorCostFunction<Double>(set);

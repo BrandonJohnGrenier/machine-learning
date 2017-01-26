@@ -7,17 +7,17 @@ import java.util.List;
 import ai.brandon.mlr.common.ErrorFunction;
 import ai.brandon.mlr.functions.LinearFunction;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
-import ai.brandon.mlr.model.TrainingSet;
+import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class GradientDescentAlgorithm<T> {
 
-    private final TrainingSet<T> set;
+    private final SupervisedTrainingSet<T> set;
     private final SquaredErrorCostFunction<T> costFunction;
 
     private Double tolerance = 1E-9;
     private Double alpha = 0.100;
 
-    public GradientDescentAlgorithm(TrainingSet<T> set) {
+    public GradientDescentAlgorithm(SupervisedTrainingSet<T> set) {
         this.set = set;
         this.costFunction = new SquaredErrorCostFunction<T>(this.set);
     }
@@ -45,7 +45,7 @@ public class GradientDescentAlgorithm<T> {
 
         Double convergence = new Double(100.0);
 
-        for (int i = 0; i < set.featureCount() + 1; i++) {
+        for (int i = 0; i < set.getFeatureCount() + 1; i++) {
             thetas.add(new BigDecimal(0.0));
             tempThetas.add(new BigDecimal(0.0));
         }
