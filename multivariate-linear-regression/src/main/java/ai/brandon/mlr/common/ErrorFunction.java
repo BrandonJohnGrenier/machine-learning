@@ -26,7 +26,7 @@ public final class ErrorFunction {
                 total = total.add(error.multiply(new BigDecimal(1)));
             }
             else {
-                total = total.add(error.multiply(new BigDecimal(instance.getFeatureAt(featureIndex - 1).toString())));
+                total = total.add(error.multiply(new BigDecimal(instance.featureAt(featureIndex - 1).toString())));
             }
         }
 
