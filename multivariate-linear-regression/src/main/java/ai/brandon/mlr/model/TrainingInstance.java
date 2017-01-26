@@ -18,4 +18,8 @@ public class TrainingInstance<T> {
         return target;
     }
 
+    public T getFeatureAt(Integer index) {
+        return features.list().get(index);
+    }
+    
 }

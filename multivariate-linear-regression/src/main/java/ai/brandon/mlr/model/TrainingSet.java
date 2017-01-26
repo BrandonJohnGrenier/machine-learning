@@ -32,6 +32,10 @@ public class TrainingSet<T> {
         return this;
     }
 
+    public Integer featureCount() {
+        return instances.get(0).getFeatures().size();
+    }
+    
     public List<TrainingInstance<T>> list() {
         return Collections.unmodifiableList(instances);
     }
