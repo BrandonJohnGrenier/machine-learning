@@ -1,4 +1,4 @@
-package ai.brandon.mlr.function;
+package ai.brandon.mlr.functions;
 
 import static java.math.BigDecimal.ZERO;
 
@@ -31,8 +31,8 @@ public class LinearFunction<T> {
         return Collections.unmodifiableList(parameters);
     }
 
-    public BigDecimal at(T... inputs) {
-        if (inputs.length != parameters.size() - 1) {
+    public BigDecimal at(List<T> inputs) {
+        if (inputs.size() != parameters.size() - 1) {
             throw new IllegalArgumentException("Function " + this + " has " + parameters.size() + " parameters, and requires " + (parameters.size() - 1) + " inputs.");
         }
 
@@ -40,13 +40,17 @@ public class LinearFunction<T> {
         return IntStream.range(0, bd_inputs.size()).mapToObj(i -> bd_inputs.get(i).multiply(parameters.get(i))).reduce(ZERO, BigDecimal::add);
     }
 
+    public BigDecimal at(T... inputs) {
+        return at(Arrays.asList(inputs));
+    }
+
     public String toString() {
         return "f(x) = " + IntStream.range(0, parameters.size()).mapToObj(i -> parameters.get(i).doubleValue() + "x" + Subscript.valueOf(i)).collect(Collectors.joining(" + ")) + ", where x" + Subscript.valueOf(0) + " = 1";
     }
 
-    private List<BigDecimal> convert(T... inputs) {
+    private List<BigDecimal> convert(List<T> inputs) {
         List<BigDecimal> list = new ArrayList<BigDecimal>(Arrays.asList(new BigDecimal(1)));
-        list.addAll(IntStream.range(0, inputs.length).mapToObj(i -> new BigDecimal(inputs[i].toString())).collect(Collectors.toList()));
+        list.addAll(inputs.stream().map(input -> new BigDecimal(input.toString())).collect(Collectors.toList()));
         return list;
     }
 

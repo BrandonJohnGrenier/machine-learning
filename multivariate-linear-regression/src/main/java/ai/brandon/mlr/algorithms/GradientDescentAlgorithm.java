@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ai.brandon.mlr.common.ErrorFunction;
-import ai.brandon.mlr.function.LinearFunction;
-import ai.brandon.mlr.function.SquaredErrorCostFunction;
+import ai.brandon.mlr.functions.LinearFunction;
+import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.model.TrainingSet;
 
 public class GradientDescentAlgorithm<T> {

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.mlr.function.LinearFunction;
+import ai.brandon.mlr.functions.LinearFunction;
 
 public class LinearFunctionTest {
 

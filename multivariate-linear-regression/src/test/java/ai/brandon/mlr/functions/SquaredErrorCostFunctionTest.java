@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.mlr.function.SquaredErrorCostFunction;
+import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.model.TrainingSet;
 
 public class SquaredErrorCostFunctionTest {

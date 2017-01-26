@@ -4,7 +4,7 @@ import static ai.brandon.mlr.model.FeatureSet.features;
 
 import org.junit.Test;
 
-import ai.brandon.mlr.function.LinearFunction;
+import ai.brandon.mlr.functions.LinearFunction;
 import ai.brandon.mlr.model.TrainingSet;
 
 public class GradientDescentAlgorithmTest {

@@ -1,4 +1,4 @@
-package ai.brandon.mlr.function;
+package ai.brandon.mlr.functions;
 
 import static java.math.BigDecimal.ZERO;
 import static java.math.RoundingMode.HALF_UP;
@@ -30,7 +30,7 @@ public class SquaredErrorCostFunction<T> {
     }
 
     private BigDecimal sumOfSquaredErrors(LinearFunction<T> function) {
-        return set.stream().map(ith -> function.at(ith.getFeatures().array()).subtract(new BigDecimal(ith.getTarget().toString())).pow(2)).reduce(ZERO, BigDecimal::add);
+        return set.stream().map(ith -> function.at(ith.getFeatures().list()).subtract(new BigDecimal(ith.getTarget().toString())).pow(2)).reduce(ZERO, BigDecimal::add);
     }
 
 }
