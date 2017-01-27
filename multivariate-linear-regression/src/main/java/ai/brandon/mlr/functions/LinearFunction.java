@@ -37,6 +37,10 @@ public class LinearFunction<T> {
         return Collections.unmodifiableList(parameters);
     }
 
+    public BigDecimal getParameterAt(Integer index) {
+        return parameters.get(index);
+    }
+    
     public BigDecimal at(T... inputs) {
         return _at(BigDecimals.toBigDecimalList(inputs));
     }

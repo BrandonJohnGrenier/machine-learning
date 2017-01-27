@@ -13,8 +13,8 @@ public final class SquaredErrorPartialDerivative {
 
     }
 
-    public static <T> BigDecimal calculate(LinearFunction<T> expression, SupervisedTrainingSet<T> set, Integer index) {
-        return derivativeSumOfErrors(expression, set, index).divide(new BigDecimal(set.size().toString()), 10, HALF_UP);
+    public static <T> BigDecimal calculate(LinearFunction<T> expression, SupervisedTrainingSet<T> set, Integer featureIndex) {
+        return derivativeSumOfErrors(expression, set, featureIndex).divide(new BigDecimal(set.size().toString()), 10, HALF_UP);
     }
 
     private static <T> BigDecimal derivativeSumOfErrors(LinearFunction<T> function, SupervisedTrainingSet<T> set, Integer featureIndex) {
