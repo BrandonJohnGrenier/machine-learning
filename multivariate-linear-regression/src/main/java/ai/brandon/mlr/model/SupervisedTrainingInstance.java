@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import ai.brandon.mlr.common.IdGenerator;
-import ai.brandon.mlr.common.JSON;
+import ai.brandon.commons.IdGenerator;
+import ai.brandon.commons.JSON;
 
 import com.google.common.base.Objects;
 

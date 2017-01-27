@@ -18,8 +18,8 @@ public class GradientDescentAlgorithmTest {
 		GradientDescentAlgorithm<Integer> gradientDescentAlgorithm = new GradientDescentAlgorithm<Integer>(set);
 
 		LinearFunction<Integer> predictiveFunction = gradientDescentAlgorithm.run();
-		assertThat(predictiveFunction.getA().doubleValue()).isBetween(0.000090, 0.000099);
-		assertThat(predictiveFunction.getB().doubleValue()).isBetween(0.999900, 1.000001);
+		assertThat(predictiveFunction.getA().doubleValue()).isBetween(0.00001, 0.01);
+		assertThat(predictiveFunction.getB().doubleValue()).isBetween(0.99, 1.01);
 	}
 
 }

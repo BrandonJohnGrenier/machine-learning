@@ -22,8 +22,9 @@
 
     <modules>
         <module>univariate-linear-regression</module>
-    <module>multivariate-linear-regression</module>
-  </modules>
+        <module>multivariate-linear-regression</module>
+        <module>machine-learning-commons</module>
+    </modules>
 
     <repositories>
         <repository>
