@@ -22,13 +22,13 @@ public final class BigDecimals {
     }
 
     public static <T> List<BigDecimal> toBigDecimalList(List<T> inputs) {
-        return inputs.stream().map(input -> new BigDecimal(input.toString())).collect(Collectors.toList());
+        return inputs.stream().map(input -> input == null ? null : new BigDecimal(input.toString())).collect(Collectors.toList());
     }
 
     public static <T> List<BigDecimal> toBigDecimalList(T... inputs) {
         List<BigDecimal> list = new ArrayList<BigDecimal>();
         for (T input : inputs) {
-            list.add(new BigDecimal(input.toString()));
+            list.add(input == null ? null : new BigDecimal(input.toString()));
         }
         return list;
     }
@@ -36,7 +36,7 @@ public final class BigDecimals {
     public static <T> BigDecimal[] toBigDecimalArray(T... inputs) {
         BigDecimal[] array = new BigDecimal[inputs.length];
         for (int i = 0; i < inputs.length; i++) {
-            array[i] = new BigDecimal(inputs[i].toString());
+            array[i] = inputs[i] == null ? null : new BigDecimal(inputs[i].toString());
         }
         return array;
     }

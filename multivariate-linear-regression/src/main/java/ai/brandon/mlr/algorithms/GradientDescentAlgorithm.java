@@ -65,14 +65,14 @@ public class GradientDescentAlgorithm<T> {
             this.cost = costFunction.at(BigDecimals.listToArray(thetas));
             tempCost = costFunction.at(BigDecimals.listToArray(tempThetas));
 
-            alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
+            this.alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
             convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
 
-            iterations += 1;
+            this.iterations += 1;
             IntStream.range(0, tempThetas.size()).forEach(i -> thetas.set(i, tempThetas.get(i)));
         }
 
-        return new LinearFunction<T>(thetas.toArray(new BigDecimal[thetas.size()]));
+        return new LinearFunction<T>(BigDecimals.listToArray(thetas));
     }
 
     private List<BigDecimal> initialise() {

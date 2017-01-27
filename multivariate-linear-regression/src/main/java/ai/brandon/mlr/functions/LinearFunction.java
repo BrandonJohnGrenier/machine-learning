@@ -30,7 +30,14 @@ public class LinearFunction<T> {
     }
 
     private void _linear_function(List<BigDecimal> parameters) {
-        this.parameters.addAll(parameters);
+        for (BigDecimal parameter : parameters) {
+            if (parameter == null) {
+                throw new IllegalArgumentException("Cannot create linear function: some parameters are null.");
+            }
+            else {
+                this.parameters.add(parameter);
+            }
+        }
     }
 
     public List<BigDecimal> getParameters() {
@@ -40,7 +47,7 @@ public class LinearFunction<T> {
     public BigDecimal getParameterAt(Integer index) {
         return parameters.get(index);
     }
-    
+
     public BigDecimal at(T... inputs) {
         return _at(BigDecimals.toBigDecimalList(inputs));
     }

@@ -10,6 +10,19 @@ import org.junit.Test;
 public class LinearFunctionTest {
 
     @Test
+    public void shouldBeAbleToCreateALinearFunction() {
+        LinearFunction<Integer> function = new LinearFunction<Integer>(1, 2, 3, 4, 5);
+        assertThat(function.getParameters()).hasSize(5);
+        assertThat(function.getParameterAt(0)).isEqualTo(new BigDecimal("1"));
+        assertThat(function.getParameterAt(4)).isEqualTo(new BigDecimal("5"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotBeAbleToCreateALinearFunctionIfAnyInputParameterIsNull() {
+        new LinearFunction<Integer>(1, 2, null, 4, 5);
+    }
+
+    @Test
     public void shouldBeAbleToCalculateTheValueOfALinearFunctionWithIntegerParameters() {
         assertThat(new LinearFunction<Integer>(1, 1).at(8)).isEqualTo(new BigDecimal("9"));
         assertThat(new LinearFunction<Integer>(1, 1).at(0)).isEqualTo(new BigDecimal("1"));
