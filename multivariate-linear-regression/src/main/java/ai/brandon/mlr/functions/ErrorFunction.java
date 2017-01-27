@@ -1,10 +1,9 @@
-package ai.brandon.mlr.common;
+package ai.brandon.mlr.functions;
 
 import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
 
-import ai.brandon.mlr.functions.LinearFunction;
 import ai.brandon.mlr.model.SupervisedTrainingInstance;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
 

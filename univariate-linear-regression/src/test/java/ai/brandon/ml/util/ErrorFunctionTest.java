@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import ai.brandon.ulr.common.ErrorFunction;
+import ai.brandon.ulr.functions.ErrorFunction;
 import ai.brandon.ulr.functions.LinearFunction;
 import ai.brandon.ulr.model.TrainingSet;
 

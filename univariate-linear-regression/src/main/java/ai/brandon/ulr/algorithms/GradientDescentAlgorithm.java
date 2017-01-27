@@ -2,7 +2,7 @@ package ai.brandon.ulr.algorithms;
 
 import java.math.BigDecimal;
 
-import ai.brandon.ulr.common.ErrorFunction;
+import ai.brandon.ulr.functions.ErrorFunction;
 import ai.brandon.ulr.functions.LinearFunction;
 import ai.brandon.ulr.functions.SquaredErrorCostFunction;
 import ai.brandon.ulr.model.TrainingSet;

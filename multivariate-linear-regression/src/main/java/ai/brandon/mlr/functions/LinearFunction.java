@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import ai.brandon.mlr.common.Subscript;
+import ai.brandon.commons.Subscript;
 
 @SuppressWarnings("unchecked")
 public class LinearFunction<T> {

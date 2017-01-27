@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import ai.brandon.mlr.common.ErrorFunction;
+import ai.brandon.mlr.functions.ErrorFunction;
 import ai.brandon.mlr.functions.LinearFunction;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.model.SupervisedTrainingSet;

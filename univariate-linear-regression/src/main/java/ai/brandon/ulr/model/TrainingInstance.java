@@ -1,7 +1,7 @@
 package ai.brandon.ulr.model;
 
 import static com.google.common.base.Objects.equal;
-import ai.brandon.ulr.common.IdGenerator;
+import ai.brandon.commons.IdGenerator;
 
 import com.google.common.base.Objects;
 

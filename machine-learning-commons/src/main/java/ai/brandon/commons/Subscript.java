@@ -1,4 +1,4 @@
-package ai.brandon.mlr.common;
+package ai.brandon.commons;
 
 import java.util.HashMap;
 import java.util.Map;

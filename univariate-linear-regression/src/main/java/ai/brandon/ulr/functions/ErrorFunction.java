@@ -1,9 +1,8 @@
-package ai.brandon.ulr.common;
+package ai.brandon.ulr.functions;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import ai.brandon.ulr.functions.LinearFunction;
 import ai.brandon.ulr.model.TrainingInstance;
 import ai.brandon.ulr.model.TrainingSet;
 
