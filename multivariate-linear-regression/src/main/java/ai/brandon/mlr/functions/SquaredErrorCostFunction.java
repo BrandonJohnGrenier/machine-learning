@@ -5,6 +5,7 @@ import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
 
+import ai.brandon.commons.BigDecimals;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 @SuppressWarnings("unchecked")
@@ -17,15 +18,11 @@ public class SquaredErrorCostFunction<T> {
     }
 
     public BigDecimal at(T... inputs) {
-        BigDecimal[] array = new BigDecimal[inputs.length];
-        for (int i = 0; i < inputs.length; i++) {
-            array[i] = new BigDecimal(inputs[i].toString());
-        }
-        return at(array);
+        return at(BigDecimals.toBigDecimalArray(inputs));
     }
 
     public BigDecimal at(BigDecimal... inputs) {
-        return sumOfSquaredErrors(new LinearFunction<T>(inputs)).divide(new BigDecimal(set.size() * 2), 10, HALF_UP);
+        return sumOfSquaredErrors(new LinearFunction<T>(inputs)).divide(new BigDecimal(2 * set.size()), 10, HALF_UP);
     }
 
     private BigDecimal sumOfSquaredErrors(LinearFunction<T> function) {

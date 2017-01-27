@@ -1,10 +1,12 @@
 package ai.brandon.mlr.algorithms;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import ai.brandon.mlr.functions.ErrorFunction;
+import ai.brandon.commons.BigDecimals;
+import ai.brandon.mlr.functions.SquaredErrorPartialDerivative;
 import ai.brandon.mlr.functions.LinearFunction;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
@@ -46,36 +48,28 @@ public class GradientDescentAlgorithm<T> {
         Double convergence = new Double(100.0);
 
         while (convergence > tolerance) {
-            for (int i = 0; i < thetas.size(); i++) {
-                tempThetas.set(i, calculateTheta(thetas.get(i), i, thetas.toArray(new BigDecimal[thetas.size()])));
-            }
+            IntStream.range(0, thetas.size()).forEach(i -> tempThetas.set(i, calculateTheta(i, thetas)));
 
-            cost = costFunction.at(thetas.toArray(new BigDecimal[thetas.size()]));
-            tempCost = costFunction.at(tempThetas.toArray(new BigDecimal[thetas.size()]));
+            cost = costFunction.at(BigDecimals.listToArray(thetas));
+            tempCost = costFunction.at(BigDecimals.listToArray(tempThetas));
 
             alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
             convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
 
-            for (int i = 0; i < tempThetas.size(); i++) {
-                thetas.set(i, tempThetas.get(i));
-            }
+            IntStream.range(0, tempThetas.size()).forEach(i -> thetas.set(i, tempThetas.get(i)));
         }
 
         return new LinearFunction<T>(thetas.toArray(new BigDecimal[thetas.size()]));
     }
 
     private List<BigDecimal> initialise() {
-        List<BigDecimal> list = new ArrayList<BigDecimal>();
-        for (int i = 0; i < set.getFeatureCount() + 1; i++) {
-            list.add(new BigDecimal(0.0));
-        }
-        return list;
+        return IntStream.range(0, set.getFeatureCount() + 1).mapToObj(i -> new BigDecimal(0.0)).collect(Collectors.toList());
     }
 
-    private BigDecimal calculateTheta(BigDecimal targetTheta, Integer index, BigDecimal... thetas) {
-        LinearFunction<T> function = new LinearFunction<T>(thetas);
-        BigDecimal vector = ErrorFunction.averageOfErrors2(function, set, index).multiply(new BigDecimal(alpha.toString()));
-        return new BigDecimal(targetTheta.toString()).subtract(vector);
+    private BigDecimal calculateTheta(Integer index, List<BigDecimal> thetas) {
+        LinearFunction<T> function = new LinearFunction<T>(BigDecimals.listToArray(thetas));
+        BigDecimal vector = SquaredErrorPartialDerivative.calculate(function, set, index).multiply(new BigDecimal(alpha.toString()));
+        return new BigDecimal(thetas.get(index).toString()).subtract(vector);
     }
 
 }
