@@ -36,8 +36,8 @@ public class LinearFunction<T> {
             throw new IllegalArgumentException("Function " + this + " has " + parameters.size() + " parameters, and requires " + (parameters.size() - 1) + " inputs - " + inputs.size() + " were provided.");
         }
 
-        List<BigDecimal> bd_inputs = convert(inputs);
-        return IntStream.range(0, bd_inputs.size()).mapToObj(i -> bd_inputs.get(i).multiply(parameters.get(i))).reduce(ZERO, BigDecimal::add);
+        List<BigDecimal> list = toBigDecimalList(inputs);
+        return IntStream.range(0, list.size()).mapToObj(i -> list.get(i).multiply(parameters.get(i))).reduce(ZERO, BigDecimal::add);
     }
 
     public BigDecimal at(T... inputs) {
@@ -48,7 +48,7 @@ public class LinearFunction<T> {
         return "f(x) = " + IntStream.range(0, parameters.size()).mapToObj(i -> parameters.get(i).doubleValue() + "x" + Subscript.valueOf(i)).collect(Collectors.joining(" + ")) + ", where x" + Subscript.valueOf(0) + " = 1";
     }
 
-    private List<BigDecimal> convert(List<T> inputs) {
+    private List<BigDecimal> toBigDecimalList(List<T> inputs) {
         List<BigDecimal> list = new ArrayList<BigDecimal>(Arrays.asList(new BigDecimal(1)));
         list.addAll(inputs.stream().map(input -> new BigDecimal(input.toString())).collect(Collectors.toList()));
         return list;
