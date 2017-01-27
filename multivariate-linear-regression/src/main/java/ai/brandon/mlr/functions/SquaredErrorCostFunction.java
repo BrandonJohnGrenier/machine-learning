@@ -4,6 +4,7 @@ import static java.math.BigDecimal.ZERO;
 import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import ai.brandon.commons.BigDecimals;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
@@ -15,6 +16,10 @@ public class SquaredErrorCostFunction<T> {
 
     public SquaredErrorCostFunction(SupervisedTrainingSet<T> set) {
         this.set = set;
+    }
+
+    public BigDecimal at(List<T> inputs) {
+        return at(BigDecimals.toBigDecimalArray(inputs));
     }
 
     public BigDecimal at(T... inputs) {

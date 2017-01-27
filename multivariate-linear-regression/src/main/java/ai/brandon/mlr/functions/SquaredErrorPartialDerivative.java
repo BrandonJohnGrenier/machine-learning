@@ -4,6 +4,7 @@ import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
 
+import ai.brandon.commons.MinimisableFunction;
 import ai.brandon.mlr.model.SupervisedTrainingInstance;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
 
@@ -13,11 +14,11 @@ public final class SquaredErrorPartialDerivative {
 
     }
 
-    public static <T> BigDecimal calculate(LinearFunction<T> expression, SupervisedTrainingSet<T> set, Integer featureIndex) {
-        return derivativeSumOfErrors(expression, set, featureIndex).divide(new BigDecimal(set.size().toString()), 10, HALF_UP);
+    public static <T> BigDecimal calculate(MinimisableFunction<T> function, SupervisedTrainingSet<T> set, Integer featureIndex) {
+        return derivativeSumOfErrors(function, set, featureIndex).divide(new BigDecimal(set.size().toString()), 10, HALF_UP);
     }
 
-    private static <T> BigDecimal derivativeSumOfErrors(LinearFunction<T> function, SupervisedTrainingSet<T> set, Integer featureIndex) {
+    private static <T> BigDecimal derivativeSumOfErrors(MinimisableFunction<T> function, SupervisedTrainingSet<T> set, Integer featureIndex) {
         BigDecimal total = new BigDecimal(0);
 
         for (SupervisedTrainingInstance<T> instance : set.list()) {

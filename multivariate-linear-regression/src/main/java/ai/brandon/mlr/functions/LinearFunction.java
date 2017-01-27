@@ -10,10 +10,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import ai.brandon.commons.BigDecimals;
+import ai.brandon.commons.MinimisableFunction;
 import ai.brandon.commons.Subscript;
 
 @SuppressWarnings("unchecked")
-public class LinearFunction<T> {
+public class LinearFunction<T> implements MinimisableFunction<T> {
 
     private final List<BigDecimal> parameters = new ArrayList<BigDecimal>();
 
@@ -21,12 +22,16 @@ public class LinearFunction<T> {
         _linear_function(BigDecimals.toBigDecimalList(parameters));
     }
 
-    public LinearFunction(List<T> parameters) {
-        _linear_function(BigDecimals.toBigDecimalList(parameters));
-    }
-
     public LinearFunction(BigDecimal... parameters) {
         _linear_function(BigDecimals.arrayToList(parameters));
+    }
+
+    public LinearFunction<T> newInstance(T... parameters) {
+        return new LinearFunction<T>(parameters);
+    }
+
+    public LinearFunction<T> newInstance(BigDecimal... parameters) {
+        return new LinearFunction<T>(parameters);
     }
 
     private void _linear_function(List<BigDecimal> parameters) {
