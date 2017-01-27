@@ -39,16 +39,11 @@ public class GradientDescentAlgorithm<T> {
     }
 
     public LinearFunction<T> run() {
-        List<BigDecimal> thetas = new ArrayList<BigDecimal>();
-        List<BigDecimal> tempThetas = new ArrayList<BigDecimal>();
+        List<BigDecimal> thetas = initialise();
+        List<BigDecimal> tempThetas = initialise();
         BigDecimal cost = new BigDecimal(100.0), tempCost = new BigDecimal(100.0);
 
         Double convergence = new Double(100.0);
-
-        for (int i = 0; i < set.getFeatureCount() + 1; i++) {
-            thetas.add(new BigDecimal(0.0));
-            tempThetas.add(new BigDecimal(0.0));
-        }
 
         while (convergence > tolerance) {
             for (int i = 0; i < thetas.size(); i++) {
@@ -61,18 +56,23 @@ public class GradientDescentAlgorithm<T> {
             alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
             convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
 
-            System.out.println("alpha = " + alpha + ", cost = " + cost);
-
             for (int i = 0; i < tempThetas.size(); i++) {
                 thetas.set(i, tempThetas.get(i));
-                System.out.println("theta(" + i + ") = " + tempThetas.get(i));
             }
         }
 
         return new LinearFunction<T>(thetas.toArray(new BigDecimal[thetas.size()]));
     }
 
-    public BigDecimal calculateTheta(BigDecimal targetTheta, Integer index, BigDecimal... thetas) {
+    private List<BigDecimal> initialise() {
+        List<BigDecimal> list = new ArrayList<BigDecimal>();
+        for (int i = 0; i < set.getFeatureCount() + 1; i++) {
+            list.add(new BigDecimal(0.0));
+        }
+        return list;
+    }
+
+    private BigDecimal calculateTheta(BigDecimal targetTheta, Integer index, BigDecimal... thetas) {
         LinearFunction<T> function = new LinearFunction<T>(thetas);
         BigDecimal vector = ErrorFunction.averageOfErrors2(function, set, index).multiply(new BigDecimal(alpha.toString()));
         return new BigDecimal(targetTheta.toString()).subtract(vector);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import ai.brandon.commons.BigDecimals;
 import ai.brandon.commons.Subscript;
 
 @SuppressWarnings("unchecked")
@@ -18,13 +19,11 @@ public class LinearFunction<T> {
     private final List<BigDecimal> parameters = new ArrayList<BigDecimal>();
 
     public LinearFunction(T... parameters) {
-        for (T parameter : parameters) {
-            this.parameters.add(new BigDecimal(parameter.toString()));
-        }
+        this.parameters.addAll(BigDecimals.toBigDecimalList(parameters));
     }
 
     public LinearFunction(BigDecimal... parameters) {
-        this.parameters.addAll(Arrays.asList(parameters));
+        this.parameters.addAll(BigDecimals.arrayToList(parameters));
     }
 
     public List<BigDecimal> getParameters() {
@@ -36,7 +35,9 @@ public class LinearFunction<T> {
             throw new IllegalArgumentException("Function " + this + " has " + parameters.size() + " parameters, and requires " + (parameters.size() - 1) + " inputs - " + inputs.size() + " were provided.");
         }
 
-        List<BigDecimal> list = toBigDecimalList(inputs);
+        List<BigDecimal> list = BigDecimals.toBigDecimalList(inputs);
+        list.add(0, new BigDecimal("1"));
+
         return IntStream.range(0, list.size()).mapToObj(i -> list.get(i).multiply(parameters.get(i))).reduce(ZERO, BigDecimal::add);
     }
 
@@ -46,12 +47,6 @@ public class LinearFunction<T> {
 
     public String toString() {
         return "f(x) = " + IntStream.range(0, parameters.size()).mapToObj(i -> parameters.get(i).doubleValue() + "x" + Subscript.valueOf(i)).collect(Collectors.joining(" + ")) + ", where x" + Subscript.valueOf(0) + " = 1";
-    }
-
-    private List<BigDecimal> toBigDecimalList(List<T> inputs) {
-        List<BigDecimal> list = new ArrayList<BigDecimal>(Arrays.asList(new BigDecimal(1)));
-        list.addAll(inputs.stream().map(input -> new BigDecimal(input.toString())).collect(Collectors.toList()));
-        return list;
     }
 
 }
