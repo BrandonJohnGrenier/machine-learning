@@ -45,7 +45,7 @@ public class GradientDescentAlgorithm<T> {
     public Integer getIterations() {
         return iterations;
     }
-    
+
     public BigDecimal getCost() {
         return cost;
     }
@@ -55,7 +55,7 @@ public class GradientDescentAlgorithm<T> {
         List<BigDecimal> tempThetas = initialise();
         BigDecimal tempCost = new BigDecimal(100.0);
         this.cost = new BigDecimal(100.0);
-        
+
         Double convergence = new Double(100.0);
         iterations = 1;
 
@@ -68,9 +68,6 @@ public class GradientDescentAlgorithm<T> {
             alpha = (tempCost.doubleValue() > cost.doubleValue()) ? alpha / 2 : alpha + 0.02;
             convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
 
-            System.out.println("iteration = " + iterations);
-            System.out.println("cost = " + cost);
-            System.out.println("alpha = " + alpha + "\n");
             iterations += 1;
             IntStream.range(0, tempThetas.size()).forEach(i -> thetas.set(i, tempThetas.get(i)));
         }
