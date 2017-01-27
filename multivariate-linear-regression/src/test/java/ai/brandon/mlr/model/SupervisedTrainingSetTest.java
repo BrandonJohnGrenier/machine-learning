@@ -3,6 +3,7 @@ package ai.brandon.mlr.model;
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -124,6 +125,38 @@ public class SupervisedTrainingSetTest {
 
         SupervisedTrainingSet<Integer> set = new SupervisedTrainingSet<Integer>(4, instances);
         assertThat(set.indexOf(instances.get(1))).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldBeAbleToConstructAndAddATrainingInstanceBasedOnTheProvidedTargetAndListOfFeatures() {
+        List<SupervisedTrainingInstance<Integer>> instances = new ArrayList<SupervisedTrainingInstance<Integer>>();
+        instances.add(new SupervisedTrainingInstance<Integer>(20, 1, 1, 1, 1));
+        instances.add(new SupervisedTrainingInstance<Integer>(25, 2, 2, 2, 2));
+        instances.add(new SupervisedTrainingInstance<Integer>(33, 3, 3, 3, 3));
+
+        SupervisedTrainingSet<Integer> set = new SupervisedTrainingSet<Integer>(4, instances);
+        assertThat(set.getInstances().size()).isEqualTo(3);
+
+        set.addInstance(40, Arrays.asList(5, 6, 7, 8));
+        set.addInstance(50, Arrays.asList(5, 6, 7, 8));
+
+        assertThat(set.getInstances().size()).isEqualTo(5);
+    }
+
+    @Test
+    public void shouldBeAbleToConstructAndAddATrainingInstanceBasedOnTheProvidedTargetAndVarArgsOfFeatures() {
+        List<SupervisedTrainingInstance<Integer>> instances = new ArrayList<SupervisedTrainingInstance<Integer>>();
+        instances.add(new SupervisedTrainingInstance<Integer>(20, 1, 1, 1, 1));
+        instances.add(new SupervisedTrainingInstance<Integer>(25, 2, 2, 2, 2));
+        instances.add(new SupervisedTrainingInstance<Integer>(33, 3, 3, 3, 3));
+
+        SupervisedTrainingSet<Integer> set = new SupervisedTrainingSet<Integer>(4, instances);
+        assertThat(set.getInstances().size()).isEqualTo(3);
+
+        set.addInstance(40, 5, 6, 7, 8);
+        set.addInstance(50, 5, 6, 7, 8);
+
+        assertThat(set.getInstances().size()).isEqualTo(5);
     }
 
 }

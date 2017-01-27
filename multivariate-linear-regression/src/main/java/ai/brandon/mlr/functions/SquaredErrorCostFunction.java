@@ -4,9 +4,6 @@ import static java.math.BigDecimal.ZERO;
 import static java.math.RoundingMode.HALF_UP;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import ai.brandon.mlr.model.SupervisedTrainingSet;
 
@@ -20,13 +17,15 @@ public class SquaredErrorCostFunction<T> {
     }
 
     public BigDecimal at(T... inputs) {
-        List<BigDecimal> list = (List<BigDecimal>) IntStream.range(0, inputs.length).mapToObj(i -> new BigDecimal(inputs[i].toString())).collect(Collectors.toList());
-        return at(list.toArray(new BigDecimal[list.size()]));
+        BigDecimal[] array = new BigDecimal[inputs.length];
+        for (int i = 0; i < inputs.length; i++) {
+            array[i] = new BigDecimal(inputs[i].toString());
+        }
+        return at(array);
     }
 
     public BigDecimal at(BigDecimal... inputs) {
-        BigDecimal total = sumOfSquaredErrors(new LinearFunction<T>(inputs));
-        return total.divide(new BigDecimal(set.size() * 2), 10, HALF_UP);
+        return sumOfSquaredErrors(new LinearFunction<T>(inputs)).divide(new BigDecimal(set.size() * 2), 10, HALF_UP);
     }
 
     private BigDecimal sumOfSquaredErrors(LinearFunction<T> function) {

@@ -33,7 +33,7 @@ public class LinearFunction<T> {
 
     public BigDecimal at(List<T> inputs) {
         if (inputs.size() != parameters.size() - 1) {
-            throw new IllegalArgumentException("Function " + this + " has " + parameters.size() + " parameters, and requires " + (parameters.size() - 1) + " inputs.");
+            throw new IllegalArgumentException("Function " + this + " has " + parameters.size() + " parameters, and requires " + (parameters.size() - 1) + " inputs - " + inputs.size() + " were provided.");
         }
 
         List<BigDecimal> bd_inputs = convert(inputs);

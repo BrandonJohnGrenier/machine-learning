@@ -47,8 +47,13 @@ public class SupervisedTrainingSet<T> {
         return this;
     }
 
-    public SupervisedTrainingSet<T> add(List<T> features, T target) {
+    public SupervisedTrainingSet<T> addInstance(T target, List<T> features) {
         add(new SupervisedTrainingInstance<T>(target, features));
+        return this;
+    }
+
+    public SupervisedTrainingSet<T> addInstance(T target, T... features) {
+        addInstance(target, Arrays.asList(features));
         return this;
     }
 
