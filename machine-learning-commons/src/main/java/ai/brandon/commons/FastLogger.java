@@ -7,12 +7,12 @@ public class FastLogger implements Log {
 
 	private final Log log;
 
-	public static FastLogger newInstance(Class<? extends Object> classToLog) {
-		return new FastLogger(classToLog);
+	public static FastLogger newInstance(Class<?> type) {
+		return new FastLogger(type);
 	}
 
-	FastLogger(Class<? extends Object> classToLog) {
-		log = LogFactory.getLog(classToLog);
+	FastLogger(Class<?> type) {
+		log = LogFactory.getLog(type);
 	}
 
 	public void debug(Object arg0, Throwable arg1) {

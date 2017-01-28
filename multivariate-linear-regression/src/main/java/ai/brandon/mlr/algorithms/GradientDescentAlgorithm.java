@@ -3,12 +3,15 @@ package ai.brandon.mlr.algorithms;
 import static java.util.stream.IntStream.range;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ai.brandon.commons.BigDecimals;
-import ai.brandon.commons.FastLogger;
 import ai.brandon.commons.MinimisableFunction;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.functions.SquaredErrorPartialDerivative;
@@ -16,7 +19,7 @@ import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class GradientDescentAlgorithm<T> {
 
-    private static final FastLogger logger = FastLogger.newInstance(GradientDescentAlgorithm.class);
+    private static final Logger logger = LoggerFactory.getLogger(GradientDescentAlgorithm.class);
 
     private final SupervisedTrainingSet<T> trainingSet;
     private final SquaredErrorCostFunction<T> costFunction;
@@ -62,7 +65,7 @@ public class GradientDescentAlgorithm<T> {
 
         this.convergence = new Double(100.0);
         this.cost = new BigDecimal(100.0);
-        this.iterations = 1;
+        this.iterations = 0;
 
         while (convergence > tolerance) {
             range(0, thetas.size()).forEach(i -> cache.set(i, calculateTheta(function, i, thetas)));
@@ -75,14 +78,7 @@ public class GradientDescentAlgorithm<T> {
             this.iterations += 1;
 
             range(0, cache.size()).forEach(i -> thetas.set(i, cache.get(i)));
-
-            for (int i = 0; i < thetas.size(); i++) {
-               // System.out.println("theta(" + i + ") =" + thetas.get(i).toPlainString());
-            }
-            logger.debug("alpha = " + alpha);
-            //System.out.println("iterations = " + iterations);
-            //System.out.println("cost = " + cost);
-            //System.out.println("");
+            log(thetas);
         }
 
         return function.newInstance(BigDecimals.listToArray(thetas));
@@ -96,6 +92,12 @@ public class GradientDescentAlgorithm<T> {
         MinimisableFunction<T> f = function.newInstance(BigDecimals.listToArray(thetas));
         BigDecimal vector = SquaredErrorPartialDerivative.calculate(f, trainingSet, index).multiply(new BigDecimal(alpha.toString()));
         return new BigDecimal(thetas.get(index).toString()).subtract(vector);
+    }
+
+    private void log(List<BigDecimal> thetas) {
+        DecimalFormat df = new DecimalFormat("0.00000");
+        String output = IntStream.range(0, thetas.size()).mapToObj(i -> "theta(" + i + ") = " + df.format(thetas.get(i).doubleValue())).collect(Collectors.joining(", "));
+        logger.debug("iteration {}: alpha = {}, cost = {}, " + output, iterations, df.format(alpha), df.format(cost));
     }
 
 }
