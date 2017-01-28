@@ -18,7 +18,7 @@ public class GradientDescentAlgorithm<T> {
     private final SupervisedTrainingSet<T> trainingSet;
     private final SquaredErrorCostFunction<T> costFunction;
 
-    private Double tolerance = 1E-9;
+    private Double tolerance = 1E-69;
     private Double convergence = 100.0;
     private Double alpha = 0.100;
     private BigDecimal cost;
@@ -71,7 +71,16 @@ public class GradientDescentAlgorithm<T> {
             this.convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
             this.iterations += 1;
 
+
             range(0, cache.size()).forEach(i -> thetas.set(i, cache.get(i)));
+            
+            for(int i = 0; i < thetas.size(); i++) {
+                System.out.println("theta(" + i + ") =" + thetas.get(i).toPlainString());
+            }
+            System.out.println("alpha = " + alpha);
+            System.out.println("iterations = " + iterations);
+            System.out.println("cost = " + cost);
+            System.out.println("");
         }
 
         return function.newInstance(BigDecimals.listToArray(thetas));

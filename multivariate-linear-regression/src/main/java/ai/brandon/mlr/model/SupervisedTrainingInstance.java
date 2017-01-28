@@ -27,15 +27,23 @@ public class SupervisedTrainingInstance<T> {
     private final T target;
     private final List<T> features = new ArrayList<T>();
 
-    public SupervisedTrainingInstance(T target, List<T> features) {
+    public SupervisedTrainingInstance(String id, T target, List<T> features) {
         validate(features, target);
-        this.features.addAll(features);
+        this.id = id;
         this.target = target;
-        this.id = IdGenerator.generateId();
+        this.features.addAll(features);
+    }
+
+    public SupervisedTrainingInstance(String id, T target, T... features) {
+        this(id, target, Arrays.asList(features));
+    }
+
+    public SupervisedTrainingInstance(T target, List<T> features) {
+        this(IdGenerator.generateId(), target, features);
     }
 
     public SupervisedTrainingInstance(T target, T... features) {
-        this(target, Arrays.asList(features));
+        this(IdGenerator.generateId(), target, Arrays.asList(features));
     }
 
     public String getId() {

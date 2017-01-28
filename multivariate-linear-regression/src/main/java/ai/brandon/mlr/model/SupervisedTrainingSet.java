@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ai.brandon.commons.JSON;
@@ -75,6 +76,10 @@ public class SupervisedTrainingSet<T> {
 
     public Integer indexOf(SupervisedTrainingInstance<T> instance) {
         return instances.indexOf(instance);
+    }
+
+    public List<T> getAllFeaturesAt(Integer index) {
+        return instances.stream().map(instance -> instance.getFeatures().get(index)).collect(Collectors.toList());
     }
 
     public boolean isEmpty() {
