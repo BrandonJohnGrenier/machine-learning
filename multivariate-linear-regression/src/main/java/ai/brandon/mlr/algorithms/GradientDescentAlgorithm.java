@@ -8,12 +8,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import ai.brandon.commons.BigDecimals;
+import ai.brandon.commons.FastLogger;
 import ai.brandon.commons.MinimisableFunction;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.functions.SquaredErrorPartialDerivative;
 import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class GradientDescentAlgorithm<T> {
+
+    private static final FastLogger logger = FastLogger.newInstance(GradientDescentAlgorithm.class);
 
     private final SupervisedTrainingSet<T> trainingSet;
     private final SquaredErrorCostFunction<T> costFunction;
@@ -71,16 +74,15 @@ public class GradientDescentAlgorithm<T> {
             this.convergence = Math.abs(tempCost.doubleValue() - cost.doubleValue());
             this.iterations += 1;
 
-
             range(0, cache.size()).forEach(i -> thetas.set(i, cache.get(i)));
-            
-            for(int i = 0; i < thetas.size(); i++) {
-                System.out.println("theta(" + i + ") =" + thetas.get(i).toPlainString());
+
+            for (int i = 0; i < thetas.size(); i++) {
+               // System.out.println("theta(" + i + ") =" + thetas.get(i).toPlainString());
             }
-            System.out.println("alpha = " + alpha);
-            System.out.println("iterations = " + iterations);
-            System.out.println("cost = " + cost);
-            System.out.println("");
+            logger.info("alpha = " + alpha);
+            //System.out.println("iterations = " + iterations);
+            //System.out.println("cost = " + cost);
+            //System.out.println("");
         }
 
         return function.newInstance(BigDecimals.listToArray(thetas));
