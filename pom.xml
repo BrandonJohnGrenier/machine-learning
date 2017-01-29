@@ -24,6 +24,7 @@
         <module>univariate-linear-regression</module>
         <module>multivariate-linear-regression</module>
         <module>machine-learning-commons</module>
+        <module>machine-learning-excel-adapter</module>
     </modules>
 
     <repositories>
