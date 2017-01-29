@@ -1,6 +1,7 @@
 package ai.brandon.mlr.functions;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import ai.brandon.commons.JSON;
 
@@ -18,7 +19,7 @@ public class NormalisationFunction {
     }
 
     public <T> BigDecimal normalise(T x) {
-        return new BigDecimal(x.toString()).subtract(mean).divide(range);
+        return new BigDecimal(x.toString()).subtract(mean).divide(range, 10, RoundingMode.HALF_UP);
     }
 
     public String toString() {
