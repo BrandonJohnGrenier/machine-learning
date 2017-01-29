@@ -5,8 +5,8 @@ import static java.math.RoundingMode.HALF_UP;
 import java.math.BigDecimal;
 
 import ai.brandon.commons.MinimisableFunction;
-import ai.brandon.mlr.model.SupervisedTrainingInstance;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
+import ai.brandon.commons.model.SupervisedTrainingInstance;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 
 public final class SquaredErrorPartialDerivative {
 

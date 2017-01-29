@@ -1,4 +1,4 @@
-package ai.brandon.mlr.model;
+package ai.brandon.commons.model;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+
+import ai.brandon.commons.model.SupervisedTrainingInstance;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 
 @SuppressWarnings("unchecked")
 public class SupervisedTrainingSetTest {

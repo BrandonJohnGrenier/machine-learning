@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import ai.brandon.commons.BigDecimals;
+import ai.brandon.commons.model.SupervisedTrainingInstance;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 import ai.brandon.mlr.functions.NormalisationFunction;
-import ai.brandon.mlr.model.SupervisedTrainingInstance;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class MeanNormalisation<T> {
 

@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
 
 import ai.brandon.commons.BigDecimals;
 import ai.brandon.commons.MinimisableFunction;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 import ai.brandon.mlr.functions.SquaredErrorCostFunction;
 import ai.brandon.mlr.functions.SquaredErrorPartialDerivative;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class GradientDescentAlgorithm<T> {
 

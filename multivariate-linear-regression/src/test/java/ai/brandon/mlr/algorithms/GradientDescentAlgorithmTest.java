@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 import ai.brandon.commons.MinimisableFunction;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 import ai.brandon.mlr.functions.LinearFunction;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class GradientDescentAlgorithmTest {
 

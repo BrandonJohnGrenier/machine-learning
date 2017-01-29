@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import ai.brandon.commons.model.SupervisedTrainingSet;
 import ai.brandon.mlr.algorithms.MeanNormalisation;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
 
 public class MeanNormalisationTest {
 

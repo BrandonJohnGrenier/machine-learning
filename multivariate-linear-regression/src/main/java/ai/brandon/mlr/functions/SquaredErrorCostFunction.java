@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import ai.brandon.commons.BigDecimals;
-import ai.brandon.mlr.model.SupervisedTrainingSet;
+import ai.brandon.commons.model.SupervisedTrainingSet;
 
 @SuppressWarnings("unchecked")
 public class SquaredErrorCostFunction<T> {

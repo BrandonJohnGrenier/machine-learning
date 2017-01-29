@@ -1,4 +1,4 @@
-package ai.brandon.mlr.model;
+package ai.brandon.commons.model;
 
 import static com.google.common.base.Objects.equal;
 
