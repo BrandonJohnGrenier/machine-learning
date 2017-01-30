@@ -22,11 +22,6 @@ public class AdapterResultAssertions extends AbstractAssert<AdapterResultAsserti
         return this;
     }
 
-    public AdapterResultAssertions hasThisManyResults(Integer size) {
-        Assertions.assertThat(actual.getData()).hasSize(size);
-        return this;
-    }
-
     public AdapterResultAssertions accepted() {
         Assertions.assertThat(actual.accepted()).describedAs("Expected the result to be accepted, but had " + actual.getErrors().size() + " validation errors: " + Arrays.toString(actual.getErrors().toArray())).isTrue();
         return this;
