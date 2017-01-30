@@ -24,35 +24,6 @@ public class ExcelRow {
 		return false;
 	}
 
-	public boolean hasExactlyTwoLinkTags() {
-		Integer count = 0;
-		for (int i = 0; i < cells.size(); i++) {
-			if (cellAt(i).isPresent() && cellAt(i).get().containsLinkTag()) {
-				count += 1;
-			}
-		}
-		return count == 2;
-	}
-
-	public boolean hasMoreThanOneIdTag() {
-		Integer count = 0;
-		for (int i = 0; i < cells.size(); i++) {
-			if (cellAt(i).isPresent() && cellAt(i).get().containsIdTag()) {
-				count += 1;
-			}
-		}
-		return count > 1;
-	}
-
-	public boolean hasIdTag() {
-		for (int i = 0; i < cells.size(); i++) {
-			if (cellAt(i).isPresent() && cellAt(i).get().containsIdTag()) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public boolean atLeastOneCellIsEmpty() {
 		for (ExcelCell cell : cells) {
 			if (cell != null && cell.isEmpty()) {

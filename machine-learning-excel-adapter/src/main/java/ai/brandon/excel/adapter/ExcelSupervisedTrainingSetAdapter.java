@@ -4,7 +4,7 @@ import ai.brandon.commons.model.SupervisedTrainingSet;
 import ai.brandon.excel.model.ExcelRow;
 import ai.brandon.excel.model.ExcelWorksheet;
 
-public class ExcelNodeAdapter implements ExcelAdapter<SupervisedTrainingSet<Double>> {
+public class ExcelSupervisedTrainingSetAdapter implements ExcelAdapter<SupervisedTrainingSet<Double>> {
 
     public AdapterResult<SupervisedTrainingSet<Double>> adapt(ExcelWorksheet worksheet) {
         if (!worksheet.isValid()) {

@@ -57,19 +57,6 @@ public class ExcelWorksheet {
 		return getColumnCount() <= 0 || getRowCount() <= 0;
 	}
 
-	public boolean containsNodeData() {
-		ExcelRow model = getMetaModel();
-		return model == null ? true : model.hasIdTag();
-	}
-
-	public boolean containsRelationshipData() {
-		ExcelRow model = getMetaModel();
-		if (model == null) {
-			return false;
-		}
-		return model.hasExactlyTwoLinkTags();
-	}
-
 	public Integer getColumnCount() {
 		int count = getLastColumnIndex() - getFirstColumnIndex();
 		return count + 1;

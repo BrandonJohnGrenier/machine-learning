@@ -22,14 +22,6 @@ public class ExcelCell {
 		return columnIndex;
 	}
 
-	public boolean containsIdTag() {
-		return value.toLowerCase().equals("#id");
-	}	
-	
-	public boolean containsLinkTag() {
-		return value.toLowerCase().equals("#link");
-	}
-
 	public String getValue() {
 		return value;
 	}

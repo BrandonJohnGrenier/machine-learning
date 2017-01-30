@@ -18,28 +18,6 @@ public class ExcelRowTest {
 	}
 
 	@Test
-	public void rowShouldContainExactlyTwoLinkTags() {
-		row.add(new ExcelCell(1, 1, "#link"));
-		row.add(new ExcelCell(1, 1, ""));
-		row.add(new ExcelCell(1, 1, null));
-		row.add(new ExcelCell(1, 1, ""));
-		row.add(new ExcelCell(1, 1, "#link"));
-		row.add(new ExcelCell(1, 1, ""));
-		assertThat(row.hasExactlyTwoLinkTags()).isTrue();
-	}
-
-	@Test
-	public void rowShouldNotContainExactlyTwoLinkTags() {
-		row.add(new ExcelCell(1, 1, ""));
-		row.add(new ExcelCell(1, 1, ""));
-		row.add(new ExcelCell(1, 1, null));
-		row.add(new ExcelCell(1, 1, ""));
-		row.add(new ExcelCell(1, 1, "#link"));
-		row.add(new ExcelCell(1, 1, ""));
-		assertThat(row.hasExactlyTwoLinkTags()).isFalse();
-	}
-
-	@Test
 	public void shouldBeAMetaModelRowIfAtLeastOneColumnStartsWithAHashTag() {
 		row.add(new ExcelCell(1, 1, ""));
 		row.add(new ExcelCell(1, 1, ""));
