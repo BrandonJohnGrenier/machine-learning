@@ -21,12 +21,11 @@
     </scm>
 
     <modules>
-        <module>univariate-linear-regression</module>
-        <module>multivariate-linear-regression</module>
-        <module>machine-learning-commons</module>
-        <module>machine-learning-excel-adapter</module>
-    <module>binary-classification</module>
-  </modules>
+        <module>regression</module>
+        <module>classification</module>
+        <module>commons</module>
+        <module>excel-adapter</module>
+   </modules>
 
     <repositories>
         <repository>
