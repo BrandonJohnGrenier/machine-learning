@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>Machine Learning Commons</name>
-    <artifactId>machine-learning-commons</artifactId>
+    <artifactId>commons</artifactId>
 
     <parent>
         <groupId>ai.brandon</groupId>
@@ -41,7 +41,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.21</version>
         </dependency>
-        
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -76,8 +76,8 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>16.0.1</version>
-        </dependency>        
-        
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
