@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import ai.brandon.commons.BigDecimals;
+import ai.brandon.commons.functions.LinearFunction;
 import ai.brandon.commons.model.SupervisedTrainingSet;
 
 @SuppressWarnings("unchecked")

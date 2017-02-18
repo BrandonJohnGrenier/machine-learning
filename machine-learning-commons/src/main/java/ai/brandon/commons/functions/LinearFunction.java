@@ -1,4 +1,4 @@
-package ai.brandon.mlr.functions;
+package ai.brandon.commons.functions;
 
 import static java.math.BigDecimal.ZERO;
 
